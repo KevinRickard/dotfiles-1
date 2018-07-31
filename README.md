@@ -21,6 +21,9 @@ if ! $(sudo xcodebuild -license status); then
   sudo xcodebuild -license accept
 fi
 
+# Fix for xcode-select errors about command line tools
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+
 # Install homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
 
