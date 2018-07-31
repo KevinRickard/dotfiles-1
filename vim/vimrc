@@ -1,0 +1,13 @@
+set tabstop=3
+set shiftwidth=3
+set softtabstop=3
+set noexpandtab
+set autoindent
+filetype plugin indent on
+syntax on
+set background=dark
+set backspace=indent,eol,start
+highlight ALEError ctermbg=DarkRed
+highlight ALEErrorSign ctermbg=DarkRed
+highlight ALEWarning ctermbg=DarkYellow
+highlight ALEWarningSign ctermbg=DarkYellow
