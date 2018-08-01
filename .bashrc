@@ -15,9 +15,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # '\W' adds the name of the current directory
 export PS1="$red\u$green\$(__git_ps1)$cyan \W $ $reset"
 
-# Setting PATH for Python 3.6
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
+export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
 
 # Giving priority to gnu updated coreutils from brew install coreutils
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
