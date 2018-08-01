@@ -1,15 +1,14 @@
 # dotfiles
 
-Make sure to edit personalinfo if you'd like to use this on your own machine.
+Make sure to edit personalinfo and look at all the scripts beforehand if you'd like to use this on your own machine.
 
-Copy/paste the following into a text file named start.sh:
+Open a terminal and type `sudo -v` to get the password prompt out of the way, and then copy and paste the following into the terminal:
 ```sh
-cd ~
-
-# Ask for the administrator password upfront
-sudo -v
 # Keep-alive: update existing `sudo` time stamp until finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Make sure we're home
+cd ~
 
 # Install Xcode Command Line Tools
 if ! $(xcode-select -p &>/dev/null); then
@@ -30,15 +29,9 @@ fi
 # get git
 brew install git
 
-# git dotfiles
+# get dotfiles
 git clone https://github.com/KevinRickard/dotfiles.git
 cd dotfiles
 source setup.sh
 
-```
-
-Then run:
-```sh
-chmod +x start.sh
-source start.sh
 ```
