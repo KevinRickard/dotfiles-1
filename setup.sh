@@ -15,13 +15,14 @@ done
 ln -s ~/dotfiles/vim/.vimrc ~/.vimrc
 ln -s ~/dotfiles/vim ~/.vim
 
-# initialize new settings
+echo "Initialize bashrc"
 source ~/.bashrc
 
 ###############################################################################
 echo "Homebrew Config"
 ###############################################################################
 
+brew analytics off
 brew tap caskroom/cask
 
 echo "Install GNU core utilities" # (those that come with macOS are outdated).
@@ -29,10 +30,10 @@ echo "Install GNU core utilities" # (those that come with macOS are outdated).
 brew install coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
-echo "Install some other useful utilities like `sponge`"
+echo "Install some other useful utilities like sponge"
 brew install moreutils
 
-echo "Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed."
+echo "Install GNU find, locate, updatedb, and xargs, g-prefixed."
 brew install findutils
 
 echo "Install Bash 4"

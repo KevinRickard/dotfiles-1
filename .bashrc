@@ -1,5 +1,5 @@
 # Enable tab completion
-source ~/git-completion.bash
+source ~/dotfiles/git-completion.bash
 
 # colors!
 green="\[\033[0;32m\]"
@@ -8,7 +8,7 @@ red="\[\033[0;91m\]"
 reset="\[\033[0m\]"
 
 # Change command prompt
-source ~/git-prompt.sh
+source ~/dotfiles/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff
@@ -19,7 +19,7 @@ export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
 
 # Giving priority to gnu updated coreutils from brew install coreutils
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 alias l='ls -lh'
 alias la='ls -lah'
