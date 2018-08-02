@@ -8,12 +8,12 @@ touch ~/.hushlogin
 # Create symlinks
 files=".bash_profile .bashrc .gitconfig"
 for file in $files; do
-  ln -s $file ~/$file
+  ln -s ~/dotfiles/$file ~/$file
 done
 
 # vim symlinks
-ln -s vim/.vimrc ~/.vimrc
-ln -s vim ~/.vim
+ln -s ~/dotfiles/vim/.vimrc ~/.vimrc
+ln -s ~/dotfiles/vim ~/.vim
 
 # initialize new settings
 source ~/.bashrc
