@@ -1,22 +1,41 @@
+###############################################################################
+echo "Dotfiles and Linking"
+###############################################################################
+
+# Stop last login message upon terminal open
+touch ~/.hushlogin
+
+# Create symlinks
+files=".bash_profile .bashrc .gitconfig"
+for file in $files; do
+  ln -s $file ~/$file
+done
+
+# vim symlinks
+ln -s vim/.vimrc ~/.vimrc
+ln -s vim ~/.vim
+
+# initialize new settings
+source ~/.bashrc
 
 ###############################################################################
-# Homebrew Conig
+echo "Homebrew Config"
 ###############################################################################
 
 brew tap caskroom/cask
 
-# Install GNU core utilities (those that come with macOS are outdated).
+echo "Install GNU core utilities" # (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
-echo PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
-# Install some other useful utilities like `sponge`.
+echo "Install some other useful utilities like `sponge`"
 brew install moreutils
 
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
+echo "Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed."
 brew install findutils
 
-# Install Bash 4.
+echo "Install Bash 4"
 brew install bash
 # Switch to using brew-installed bash as default shell
 if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
@@ -24,6 +43,7 @@ if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
   chsh -s /usr/local/bin/bash;
 fi;
 
+echo "Install lots of stuff"
 brew install ssh-copy-id
 brew install tree
 brew install webkit2png
@@ -31,7 +51,6 @@ brew install vim --with-override-system-vi
 brew install wget --with-iri
 brew install gnu-sed --with-default-names
 brew install openssh
-brew install scala
 brew install the_silver_searcher
 brew install grep
 brew install xpdf
@@ -41,9 +60,26 @@ brew install p7zip
 brew install rename
 #?? brew install gdb
 #?? brew install rsync
+brew cask install keepassxc
+brew cask install sublime-text
+
+echo "Install languages and build tools"
+brew cask install java
+brew install scala
+brew install maven
+brew install gradle
+
+echo "Install android stuff"
+brew cask install android-sdk
+sdkmanager --update
+brew cask install android-studio
+
+echo "Install pycharm"
+brew cask install pycharm
+
 
 ###############################################################################
-# Google Fonts
+echo "Install Google Fonts"
 ###############################################################################
 
 # Install Google Fonts
@@ -64,7 +100,7 @@ if ! crontab -l | fgrep "$cron_entry" >/dev/null; then
 fi
 
 ###############################################################################
-# Defaults
+echo "Configure Defaults"
 ###############################################################################
 
 osascript -e 'tell application "System Preferences" to quit'
@@ -242,6 +278,12 @@ sudo chflags nohidden /Volumes
 
 defaults write net.sourceforge.skim-app.skim SKDisableTableToolTips 1
 
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+echo "Defaults done. Note that some of these changes require a logout/restart to take effect."
 
+###############################################################################
+echo "Install terminal theme"
+###############################################################################
 
+# Will open a new terminal window when this part is executed; Just ignore it.
+open MyPro.terminal
+defaults write com.apple.terminal "Default Window Settings" "MyPro"

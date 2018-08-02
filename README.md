@@ -10,19 +10,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Make sure we're home
 cd ~
 
-# Install Xcode Command Line Tools
-if ! $(xcode-select -p &>/dev/null); then
-  xcode-select --install &>/dev/null
-  # Wait until the Xcode Command Line Tools are installed
-  until $(xcode-select -p &>/dev/null); do
-    sleep 5
-  done
-fi
-# Accept the Xcode/iOS license agreement
-if ! $(sudo xcodebuild -license status); then
-  sudo xcodebuild -license accept
-fi
-
 # Install homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
 
