@@ -25,6 +25,7 @@ alias l='ls -lh'
 alias la='ls -lah'
 alias vi='vim'
 alias g='git status'
+alias gc='git commit -m'
 alias v='vim'
 
 copy(){

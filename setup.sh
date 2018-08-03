@@ -39,6 +39,7 @@ brew install findutils
 echo "Install Bash 4"
 brew install bash
 # Switch to using brew-installed bash as default shell
+# TODO: fix password prompt
 if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
   echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
   chsh -s /usr/local/bin/bash;
@@ -61,11 +62,13 @@ brew install p7zip
 brew install rename
 #?? brew install gdb
 #?? brew install rsync
+
+# TODO: fix password prompt for first cask
 brew cask install keepassxc
 brew cask install sublime-text
 
 echo "Install languages and build tools"
-brew cask install java
+brew cask install homebrew/cask-versions/java8
 brew install scala
 brew install maven
 brew install gradle
@@ -78,6 +81,8 @@ brew cask install android-studio
 echo "Install pycharm"
 brew cask install pycharm
 
+# TODO: set intellij scala home to /usr/local/opt/scala/idea?
+brew cask install intellij-idea-ce
 
 ###############################################################################
 echo "Install Google Fonts"
