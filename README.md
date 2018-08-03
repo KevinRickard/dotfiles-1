@@ -1,5 +1,8 @@
 # dotfiles
 
+## alpha status
+This is still in rapid development and not a full setup yet. Not everything works as intended. Use at your own risk.
+
 Make sure to edit personalinfo and look at all the scripts beforehand if you'd like to use this on your own machine.
 
 Open a terminal and type `sudo -v` to get the password prompt out of the way, and then copy and paste the following into the terminal:
