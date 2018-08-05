@@ -1,5 +1,5 @@
 # Enable tab completion
-source ~/dotfiles/git-completion.bash
+#source ~/dotfiles/git-completion.bash
 
 # colors!
 green="\[\033[0;32m\]"
@@ -52,5 +52,63 @@ paste(){
             cp $orig_path $dist_name
         fi
         echo "\"$1\" pasted."
+    fi
+}
+
+###############################################################################
+# Refaults
+###############################################################################
+
+REFAULTS_DIR="$HOME/.refaults"
+DEFAULTS_READ_FILE="$REFAULTS_DIR/defaults_read"
+refaults(){
+    if [ ! -f $DEFAULTS_READ_FILE ] && [ ! -d "$REFAULTS_DIR/.git" ];then
+        echo "Creating refaults directory: $REFAULTS_DIR"
+        mkdir -p $REFAULTS_DIR
+        echo "Creating defaults read file: $DEFAULTS_READ_FILE"
+        defaults read > $DEFAULTS_READ_FILE
+        echo "Creating refaults directory: $REFAULTS_DIR"
+        echo "Creating git repository for refaults:"
+        git -C $REFAULTS_DIR init
+        git -C $REFAULTS_DIR add $DEFAULTS_READ_FILE
+        git -C $REFAULTS_DIR commit -am "Initial Defaults"
+    else
+        if [ $# == 0 ];then
+            refaults diff
+        else
+            if [ $1 == "commit" ];then
+                commit_msg="Update Defaults"
+                if (( $# >= 2 ));then
+                    commit_msg=$2
+                fi
+                git -C $REFAULTS_DIR commit -am "$commit_msg"
+            else  
+                if [ $1 == "diff" ];then
+                    echo "Reading defaults current state."
+                    defaults read > $DEFAULTS_READ_FILE
+                    commits_back="0"
+                    if (( $# >= 2 ));then
+                        regex_for_num='^[0-9]+$'
+                        if ! [[ $2 =~ $regex_for_num ]];then
+                            echo "ERROR: second argument is not a number. Defaulting to last commit"
+                        else
+                            commits_back=$2
+                        fi
+                    fi
+                    echo "Comparing to $commits_back commits back:"
+                    git -C $REFAULTS_DIR diff HEAD~$commits_back
+                    echo "If you want to save this state, don't forget to make a 'refaults commit'!"
+                else
+                    if [ $1 == "log" ];then
+                        git -C $REFAULTS_DIR log
+                    else
+                        if [ $1 == "status" ];then
+                            defaults read > $DEFAULTS_READ_FILE
+                            git -C $REFAULTS_DIR status
+                        fi
+                    fi
+                fi
+            fi
+        fi
     fi
 }

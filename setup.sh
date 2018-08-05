@@ -66,6 +66,7 @@ brew install rename
 # TODO: fix password prompt for first cask
 brew cask install keepassxc
 brew cask install sublime-text
+brew cask install private-internet-access
 
 echo "Install languages and build tools"
 brew cask install homebrew/cask-versions/java8
@@ -293,3 +294,5 @@ echo "Install terminal theme"
 # Will open a new terminal window when this part is executed; Just ignore it.
 open MyPro.terminal
 defaults write com.apple.terminal "Default Window Settings" "MyPro"
+
+cat next-steps.txt
