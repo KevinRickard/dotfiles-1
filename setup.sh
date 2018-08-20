@@ -295,4 +295,8 @@ echo "Install terminal theme"
 open MyPro.terminal
 defaults write com.apple.terminal "Default Window Settings" "MyPro"
 
+###############################################################################
+echo "Done!!!"
+###############################################################################
+
 cat next-steps.txt
